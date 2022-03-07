@@ -1,0 +1,15 @@
+{
+  "name": "mongobd",
+  "version": "1.0.0",
+  "description": "Initialisation base mondodb -- MMI S4 Info 2022",
+  "main": "dbcreate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dbcreate.js"
+  },
+  "author": "MMIProf",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "mongoose": "^6.2.4"
+  }
+}
