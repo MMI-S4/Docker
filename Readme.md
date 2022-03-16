@@ -104,6 +104,7 @@ docker compose up -d
 
 ## Liens
 
+- transparents sur Dockers : [Docker.pdf](Docker.pdf)
 - documentation Docker : https://docs.docker.com/
 - manuel de référence pour les fichiers *Dockerfile* : 
   https://docs.docker.com/engine/reference/builder/
