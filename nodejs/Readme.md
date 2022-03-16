@@ -18,7 +18,7 @@ La construction de l'image peut alors se faire
 en utilisant la commande `docker build` dans le dossier nodejs  : 
 
 ```bash
-docker build --tag stalb/mmis4serveur:v0 .
+docker build --tag stalb/mmis4serveur:v1 .
 ```
 
 ## Création et lancement du conteneur à partir de l'image créée
@@ -28,10 +28,10 @@ pour lancer le serveur Node.js correspondant
 dans un conteneur docker, en utilisant la commande `docker run`. 
 
 ```bash
-docker run -d -p 3000:3000 --name monserveur stalb/mmis4serveur:v0 
+docker run -d -p 3000:3000 --name monserveur stalb/mmis4serveur:v1 
 ```
 
-Cela créée un nouveau conteneur à partir de l'image `stalb/mmis4serveur:v0`. 
+Cela créée un nouveau conteneur à partir de l'image `stalb/mmis4serveur:v1`. 
 Le nom de ce conteneur est *monserveur* (utilisation de l'option `--name`). 
 Il est alors lancé en arrière plan (utilisation de l'option `-d`) en 
 *mappant* le port *3000* de la machine locale avec le port *3000* du conteneur 
@@ -45,7 +45,7 @@ On peut également envoyer l'image construite sur [docker hub](https://hub.docke
 ou un autre dépôt d'images (*registry*) docker en utilisant la commande `docker push`. 
 
 ```bash
-docker push stalb/mmis4serveur:v0
+docker push stalb/mmis4serveur:v1
 ```
 
 À noter qu'il est nécessaire de disposer au préalable d'un compte sur le dépôt d'images docker 
@@ -53,8 +53,8 @@ docker push stalb/mmis4serveur:v0
 
 Dans le cas de docker hub (le dépôt d'images utilisé par défaut), 
 le nom de l'image, doit correspondre au nom du compte, dans l'exemple *stalb*, 
-suivi du nom du dépôt à utiliser, *mmis4serveur* et du tag (la version) de l'image, *v0* : 
-*stalb/mmis4serveur:v0*. 
+suivi du nom du dépôt à utiliser, *mmis4serveur* et du tag (la version) de l'image, *v1* : 
+*stalb/mmis4serveur:v1*. 
 
 L'image devient alors accessible sur docker hub : 
 https://hub.docker.com/r/stalb/mmis4serveur
