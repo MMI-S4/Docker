@@ -112,5 +112,5 @@ docker compose up -d
   https://docs.docker.com/engine/reference/commandline/docker/
 - manuel de référence pour les fichiers *docker-compose* : 
   https://docs.docker.com/compose/compose-file/compose-file-v3/
-- manuel de référence de la commandes `docker compose` : 
+- manuel de référence des commandes `docker compose` : 
   https://docs.docker.com/compose/reference/
