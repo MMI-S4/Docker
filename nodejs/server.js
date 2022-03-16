@@ -1,4 +1,15 @@
 const express = require('express');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://mongodb/mmis4db', { useNewUrlParser: true });
+
+var Schema = mongoose.Schema;
+
+var PlayerSchema = new Schema({
+    userName: String,
+    playerName: String
+});
+var Player = mongoose.model('Player', PlayerSchema);
+
 
 let compteur = 0;
 
@@ -10,45 +21,35 @@ app.get('/', (req,res) => {
 });
 
 app.get('/users/', (req,res) => {
-
-    // Données au format JSON
-    var fakeData = {
-        "username" : "titi",
-        "victoires" : 42,
-        "echecs" : 10000,
-        "tableauTruc": [
-            { name: "vie", value: 2.5 },
-            { name: "experience", value: 7.1 },
-            { name: "mana", value: 9000.001 }
-        ]
-    };
-    
-    // Exemple de retour montrant que les balises web et qu'une page complète
-    // pourrait être générée:
-    //res.send("<B>Liste des informations des utilisateurs connectés:</B><BR/>");
-    
-    // Renvoi direct des informations au format JSON
-    // Intéressant lorsqu'on va les utiliser dans une autre application comme
-    // Unity...
-    res.json(fakeData);
+    // vraies données au format JSON
+    Player.find({}, function(err, players) {
+        if (err){
+            console.log(err)
+            res.status(500)
+            res.type('text/plain')
+            res.send("pb dans l'execution de la requete mongodb\n" + err.stack);
+         }
+        else{
+            res.json(players);
+        }        
+    });
 });
 
 // On prépare une route qui récupèrera/utilisera une variable id
 app.get('/user/:id', (req,res) => {
 
-    // Fausses données ("en dur") au format JSON
-    var fakeData = {
-        "userid" : req.params["id"],
-        "victoires" : 42,
-        "echecs" : 10000,
-        "tableauTruc": [
-            { name: "vie", value: 2.5 },
-            { name: "experience", value: 7.1 },
-            { name: "mana", value: 9000.001 }
-        ]
-    };
-
-    res.json(fakeData);
+    // vraies données au format JSON
+    Player.findById(req.params.id, function(err, player) {
+        if (err){
+            console.log(err)
+            res.status(500)
+            res.type('text/plain')
+            res.send("pb dans l'execution de la requete mongodb\n" + err.stack);
+        }
+        else{
+            res.json(player);
+        }        
+    });
 })
 
 app.listen(3000, 
